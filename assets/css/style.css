@@ -1,0 +1,191 @@
+*,
+*::before,
+*::after {
+    font-size: inherit;
+    font-family: inherit;
+    padding: 0;
+    margin: 0;
+    outline: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    background-color: black;
+    background-image: linear-gradient(-45deg, rgba(103, 251, 250, 0.3), black 40% 60%, rgba(103, 251, 250, 0.3));
+    padding: 1.5rem;
+}
+
+.container {
+    max-width: 900px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 0 auto;
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: fit-content;
+}
+
+.controls button {
+    padding: 1rem;
+    border: 3px solid rgba(128, 128, 128, 0.5);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    font-size: 1.5rem;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+}
+
+.controls button:first-of-type {
+    border-left-width: 3px;
+    border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.controls button:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    background-image: radial-gradient(circle at bottom center, rgba(103, 251, 250, 0.5), transparent 30px);
+    backdrop-filter: blur(10px);
+}
+
+.controls #customTime {
+    padding: 1rem;
+    width: 175px;
+    border: 3px solid rgba(128, 128, 128, 0.5);
+    border-left-width: 1px;
+    border-right-width: 3px;
+    border-radius: 0 0.5rem 0.5rem 0;
+    line-height: 2rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.controls #customTime:focus,
+.controls #customTime:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    background-image: radial-gradient(circle at bottom center, rgba(103, 251, 250, 0.5), transparent 30px);
+    backdrop-filter: blur(10px);
+}
+
+.timer {
+    position: relative;
+}
+
+.timer .progress {
+    transform: rotate(-90deg);
+}
+
+.progress #progress-bar {
+    position: relative;
+    z-index: 2;
+}
+
+.progress #progress-bar circle {
+    fill: none;
+}
+
+.progress #progress-bar circle:nth-child(1) {
+    stroke: #404040;
+    stroke-width: 6px;
+}
+
+.progress #progress-bar circle:nth-child(2) {
+    stroke: #67fbfa;
+    stroke-width: 10px;
+    stroke-dasharray: 848;
+    stroke-dashoffset: 848;
+    stroke-linecap: round;
+    transition: all 0.1s linear;
+}
+
+.progress #progress-pointer {
+    width: 135px;
+    height: 30px;
+    position: absolute;
+    transform-origin: top left;
+    top: 50%;
+    left: 50%;
+    transform: rotate(0deg);
+    background-image: linear-gradient(12deg, transparent 40%, rgba(103, 251, 250, 0.5));
+    z-index: 1;
+    display: none;
+}
+
+.timer.active .progress #progress-pointer {
+    display: block;
+    animation: rotate 1s linear 0s infinite;
+}
+
+.timer #currentTime {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 3.75rem;
+}
+
+.container #clear {
+    visibility: hidden;
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    border: 3px solid #606060;
+    transition: background 0.2s ease;
+}
+
+.container .timer.active+#clear {
+    visibility: visible;
+}
+
+.container #clear:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    background-image: radial-gradient(circle at bottom center, rgba(103, 251, 250, 0.5), transparent 50% 100%);
+    backdrop-filter: blue(10px);
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width: 860px) {
+    .controls {
+        gap: 1rem;
+    }
+
+    .container .controls button, .container .controls #customTime {
+        border-radius: 0.5rem;
+        border: 3px solid #606060;
+        font-size: 1rem;
+    }
+
+    .container .controls #customTime {
+        line-height: 1.4rem;
+    }
+}
