@@ -8,7 +8,7 @@ This project is a countdown timer made for learning purposes, where you can sele
 
 ## Live Preview
 
-View the live project: [here](https://lugom.io/projects/countdown-timer/)
+View the live project: [here](https://lugom.io/projects/countdown-clock/)
 
 ## Technologies Used
 
